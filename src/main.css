@@ -1,0 +1,24 @@
+html,
+body,
+#map {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.marker {
+    background-image: url('../public/data/trailhead_icon.png');
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.mapboxgl-popup {
+    max-width: 200px;
+}
+  
+.mapboxgl-popup-content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+  }
