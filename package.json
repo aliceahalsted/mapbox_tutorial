@@ -1,0 +1,27 @@
+{
+    "name": "mapbox_template",
+    "version": "0.0.1",
+    "description": "",
+    "private": true,
+    "keywords": "",
+    "license": "",
+    "author": "Alicea Halsted",
+    "scripts": {
+        "build": "webpack",
+        "start": "webpack serve",
+        "watch": "webpack --watch",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "css-loader": "^6.7.3",
+        "html-webpack-plugin": "^5.5.0",
+        "style-loader": "^3.3.1",
+        "webpack": "^5.76.2",
+        "webpack-cli": "^4.10.0",
+        "webpack-dev-server": "^4.13.1"
+    },
+    "dependencies": {
+        "@turf/turf": "^6.5.0",
+        "mapbox-gl": "^2.13.0"
+    }
+}
