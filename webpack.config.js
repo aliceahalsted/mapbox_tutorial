@@ -1,30 +1,28 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+  mode: 'development',
   entry: {
     index: './src/index.js',
   },
+  devtool: 'inline-source-map',
+  devServer: {
+    static: {
+        directory: path.join(__dirname, 'public')
+    },
+    compress: true,
+    port: 9000
+  },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public/dist'),
     clean: true,
-    assetModuleFilename: 'src/assets/images/[name][ext]'
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Mapbox Boilerplate',
      template: 'src/index.html',
-    }),
-    new WebpackManifestPlugin({
-      fileName: 'site.webmanifest'
-    }),
-    new CopyPlugin({
-      patterns: [
-        { from: "src/data", to: "data" },
-      ],
     }),
   ],
   module: {

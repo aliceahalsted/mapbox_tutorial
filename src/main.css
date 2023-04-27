@@ -13,38 +13,3 @@ body {
     top: 0;
     bottom: 0;
 }
-.header {
-    height: 4vh;
-    width: 100vw;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-    padding: 30px 0 30px;
-    background: rgb(239,233,225);
-    background: linear-gradient(0deg, rgba(239,233,225,0) 0%, rgba(239,233,225,0.8715861344537815) 30%, rgba(239,233,225,1) 100%);
-    z-index: 3;
-    position: absolute;
-    
-}
-@media all and (max-width: 475px) { 
-    .header {
-        font-size: 1rem;
-        height: 1vh;
-        padding: 18px;
-    }
-}
-.marker {
-    background-image: url('/src/assets/hiker.svg');
-    background-size: cover;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-}
-.mapboxgl-popup {
-    max-width: 200px;
-}
-  
-.mapboxgl-popup-content {
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-  }
