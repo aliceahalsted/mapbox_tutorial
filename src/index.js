@@ -3,7 +3,7 @@ import * as turf from '@turf/turf';
 import './main.css';
 
 // TO MAKE THE MAP APPEAR YOU MUST ADD YOUR ACCESS TOKEN FROM
-// https://account.mapbox.com
+// https://account.mapbox.com 
 mapboxgl.accessToken = 'XXXX-XXXX-XXXX';
 const map = new mapboxgl.Map({
     container: 'map', // container ID to match the html
@@ -16,10 +16,7 @@ const map = new mapboxgl.Map({
 let hoveredStateId = null; //For use on styling hover
 
 //Add navigation controls
-map.addControl(new mapboxgl.NavigationControl());
-
-//Add fullscreen controls
-map.addControl(new mapboxgl.FullscreenControl());
+map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
 //Create a custom marker icon for all points in trailhead file
 const createMarker = (featuresList) => {
@@ -70,7 +67,7 @@ map.on('load', () =>{
         type: 'geojson',
         data:'../data/GRSM_TRAILS.geojson',
         generateId: true //Add ids to each feature
-    }),
+    })
     map.addLayer({
         id: 'trails',
         type: 'line',
@@ -83,7 +80,7 @@ map.on('load', () =>{
             'line-color': [
                 'case',
                 ['boolean', ['feature-state', 'hover'], false], //Ajust color based on hover state
-                '#fbb03b','#888',
+                '#fbb03b','#7e9480',
             ],
             'line-width': 4
             },
@@ -98,10 +95,10 @@ map.on('load', () =>{
             'line-cap': 'round'
             },
         paint: {
-            'line-color': '#ff3456',
+            'line-color': '#264a2a',
             'line-width': 4
             },
-        filter: ['==', ['get','OBJECTID'],''] //Only show matching filtered objects, '' means display none
+        filter: ['==', ['get','TRAILNAME'],''] //Only show matching filtered objects, '' means display none
     })
 });
 
@@ -128,8 +125,8 @@ map.on('click', 'trails', (e)=>{
         }
         
         //Set the filter on the hidden trails layer to show
-        map.setFilter('trails_click',['==', ['get','OBJECTID'], objectIdentifier])
-        
+        map.setFilter('trails_click',['==', ['get','TRAILNAME'], description])
+
         //Find the midpoint of the line to show the popup from
         let midpoint = getMidPointOfLine(e.features[0].geometry.coordinates);
         
