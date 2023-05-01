@@ -4,7 +4,7 @@ import './main.css';
 
 // TO MAKE THE MAP APPEAR YOU MUST ADD YOUR ACCESS TOKEN FROM
 // https://account.mapbox.com 
-mapboxgl.accessToken = 'XXXX-XXXX-XXXX';
+mapboxgl.accessToken = 'XXX-XXX-XXX';
 const map = new mapboxgl.Map({
     container: 'map', // container ID to match the html
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
@@ -44,7 +44,7 @@ const getMidPointOfLine = (lineCoordinates) => {
     const lengthTrailLine = turf.length(trailLine)
     const midpointCoord = turf.along(trailLine, lengthTrailLine/2);
     return midpointCoord.geometry.coordinates;
-}
+};
 
 //Load files to map
 map.on('load', () =>{
@@ -79,9 +79,10 @@ map.on('load', () =>{
         paint: {
             'line-color': [
                 'case',
-                ['boolean', ['feature-state', 'hover'], false], //Ajust color based on hover state
+                ['boolean', ['feature-state', 'hover'], false], //Adjust color based on hover state
                 '#fbb03b','#7e9480',
             ],
+            //'line-color': '#7e9480',
             'line-width': 4
             },
         
@@ -115,7 +116,6 @@ map.on('click', 'trails', (e)=>{
         // Get details of the clicked feature
         const coordinates = e.features[0].geometry.coordinates[0];
         const description = e.features[0].properties.TRAILNAME;
-        const objectIdentifier = e.features[0].properties.OBJECTID;
         
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -149,6 +149,7 @@ const hoverpopup = new mapboxgl.Popup({
 map.on('mousemove', 'trails', (e) => {
     map.getCanvas().style.cursor = 'pointer';
     if (e.features.length > 0) {
+        //Same a mouse leave call, clear all highlights first
         if (hoveredStateId !== null) {
             map.setFeatureState(
             { source: 'trails', id: hoveredStateId },
@@ -169,8 +170,8 @@ map.on('mousemove', 'trails', (e) => {
         }
     });
      
-// Change it back to a pointer when it leaves
-// Update hover state to false and remove popup
+//Change it back when it leaves
+//Update hover state to false and remove popup
 map.on('mouseleave', 'trails', () => {
     map.getCanvas().style.cursor = '';
     if (hoveredStateId !== null) {
@@ -180,5 +181,5 @@ map.on('mouseleave', 'trails', () => {
             );
         }
     hoveredStateId = null;
-    hoverpopup.remove
+    hoverpopup.remove;
 });
