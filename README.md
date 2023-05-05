@@ -8,3 +8,5 @@ mapboxgl.accessToken = 'XXXX-XXXX-XXXX';<br>
 To run this code:<br>
 npm install<br>
 npm run start<br>
+
+Checkout the working tutorial https://mapbox-tutorial.netlify.app/  
