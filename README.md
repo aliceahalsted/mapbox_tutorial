@@ -1,4 +1,4 @@
-# mapbox_template
+# mapbox_tutorial
 IMPORTANT:
 Before you can get this code to work you'll need a MapBox Access token<br>
 https://account.mapbox.com<br>
